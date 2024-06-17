@@ -21,7 +21,7 @@ body {
   padding: 0;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #f1f1f1;
+  /* box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #f1f1f1; */
   display: flex;
 }
 
@@ -35,11 +35,12 @@ body {
 
 .movie-card .left {
   flex: 1;
-  padding: 5px;
+  padding: 5px
 }
 
 .movie-card .left img {
   height: 250px;
+
 }
 
 .movie-card .right {
@@ -62,28 +63,49 @@ body {
   margin-top: 20px;
   padding: 0 20px;
   font-weight: 500;
-  color: rgb(0, 75, 0);
+  color: rgb(0, 75, 0)
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   display: flex;
+
   width: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
-
 }
 
 .footer .rating {
   font-size: 20px;
   font-weight: 600;
-  flex: 1;
+  flex: 1
 }
 
 .footer .stars {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+}
+
+.footer .star-dis {
+  font-size: 20px;
+  font-weight: 600;
+  flex: 1;
+  position: relative;
+}
+
+footer.starCount {
+  font-size: 20px;
+  font-weight: 600;
+  position: absolute;
+  left: 50;
+
+}
+
+
+.footer .str-btn {
+  width: 7px;
+  height: 7px
 }
 
 .footer button {
@@ -111,22 +133,9 @@ body {
 
 }
 
-.footer .star-dis {
-  font-size: 20px;
-  font-weight: 600;
-  flex: 1;
-  position: relative;
-}
-
-.footer .str-btn {
-  width: 7px;
-  height: 7px
-}
-
-.footer .starCount {
-  font-size: 25px;
-  font-weight: 600;
-  position: absolute;
-  left: 50;
-
+.unfavourite-btn {
+  background-color: #db2828;
+  color: #fff;
+  text-shadow: none;
+  margin: 5px;
 }

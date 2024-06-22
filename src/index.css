@@ -115,6 +115,7 @@ footer.starCount {
   border-radius: 3px;
   border: none;
   font-weight: 600;
+  cursor: pointer;
 
 
 }
@@ -130,6 +131,8 @@ footer.starCount {
   background-color: #251bb1;
   color: #fff;
   margin: 5px;
+
+
 
 }
 

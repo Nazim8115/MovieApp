@@ -8,11 +8,48 @@ class MovieCard extends Component {
       plot: "Supernatural powers shown in the movie.",
       price: 700,
       rating: 8.9,
+      stars: 0,
+      fav: false,
     };
   }
+  addStar = () => {
+    // formal
+    //   this.setState({
+    //     stars: this.state.stars + 0.5,
+    //   });
+
+    if (this.state.stars >= 5) {
+      return;
+    }
+
+    // 2nd form
+    this.setState((prevState) => {
+      return {
+        stars: prevState.stars + 0.5,
+      };
+    });
+  };
+
+  addToFavourite = () => {
+    this.setState((prevState) => {
+      return {
+        fav: !prevState.fav,
+      };
+    });
+  };
+
+  decreaseStar = () => {
+    this.setState((prevState) => {
+      if (prevState.stars <= 0) {
+        console.log("Can't decrease!");
+        return;
+      }
+      return { stars: prevState.stars - 0.5 };
+    });
+  };
 
   render() {
-    const { title, plot, price, rating } = this.state;
+    const { title, plot, price, rating, stars } = this.state;
     return (
       <div className="main">
         <div className="movie-card">
@@ -33,6 +70,7 @@ class MovieCard extends Component {
                   className="str-btn"
                   alt="decrease"
                   src="https://cdn-icons-png.flaticon.com/128/43/43625.png"
+                  onClick={this.decreaseStar}
                 />
                 <img
                   alt="start"
@@ -43,11 +81,17 @@ class MovieCard extends Component {
                   className="str-btn"
                   alt="increase"
                   src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
+                  onClick={this.addStar}
                 />
-                <span className="starCount">0</span>
+                <span className="starCount">{stars}</span>
               </div>
 
-              <button className="favourite-btn">Favourite</button>
+              <button
+                className={this.state.fav ? "unfavourite-btn" : "favourite-btn"}
+                onClick={this.addToFavourite}
+              >
+                {this.state.fav ? "Unfavourite" : "Favourite"}
+              </button>
               <button className="cart-btn">Add to cart</button>
             </div>
           </div>

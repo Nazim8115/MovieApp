@@ -1,17 +1,6 @@
 import { Component } from "react";
 
 class MovieCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "The Avengers",
-      plot: "Supernatural powers shown in the movie.",
-      price: 700,
-      rating: 8.9,
-      stars: 0,
-      fav: false,
-    };
-  }
   addStar = () => {
     // formal
     //   this.setState({
@@ -30,14 +19,6 @@ class MovieCard extends Component {
     });
   };
 
-  addToFavourite = () => {
-    this.setState((prevState) => {
-      return {
-        fav: !prevState.fav,
-      };
-    });
-  };
-
   decreaseStar = () => {
     this.setState((prevState) => {
       if (prevState.stars <= 0) {
@@ -47,9 +28,19 @@ class MovieCard extends Component {
       return { stars: prevState.stars - 0.5 };
     });
   };
+  handleAddToFavourite = () => {
+    this.setState({
+      fav: !this.state.fav,
+    });
+  };
+
+  handleAddToCard = () => {
+    this.setState({ isInCard: !this.state.isInCard });
+  };
 
   render() {
-    const { title, plot, price, rating, stars } = this.state;
+    const { title, plot, price, rating, stars, fav, isInCard } =
+      this.props.movies;
     return (
       <div className="main">
         <div className="movie-card">
@@ -87,12 +78,17 @@ class MovieCard extends Component {
               </div>
 
               <button
-                className={this.state.fav ? "unfavourite-btn" : "favourite-btn"}
-                onClick={this.addToFavourite}
+                className={fav ? "unfavourite-btn" : "favourite-btn"}
+                onClick={this.handleAddToFavourite}
               >
-                {this.state.fav ? "Unfavourite" : "Favourite"}
+                {fav ? "Unfavourite" : "Favourite"}
               </button>
-              <button className="cart-btn">Add to cart</button>
+              <button
+                className={isInCard ? "remove-from-card" : "cart-btn"}
+                onClick={this.handleAddToCard}
+              >
+                {isInCard ? "Remove from card" : "Add to cart"}
+              </button>
             </div>
           </div>
         </div>

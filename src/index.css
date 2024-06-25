@@ -142,3 +142,10 @@ footer.starCount {
   text-shadow: none;
   margin: 5px;
 }
+
+.remove-from-card {
+  background-color: #db2828;
+  color: #fff;
+  text-shadow: none;
+  margin: 5px;
+}

@@ -41,12 +41,63 @@ class MovieList extends Component {
       ],
     };
   }
+
+  handleAddStars = (movie) => {
+    const { movies } = this.state;
+    const mid = movies.indexOf(movie);
+    if (movies[mid].star >= 5) {
+      return;
+    }
+    movies[mid].star += 0.5;
+    this.setState({
+      movies: movies,
+    });
+  };
+
+  handleDecStars = (movie) => {
+    const { movies } = this.state;
+    const movieID = movies.indexOf(movie);
+    if (movies[movieID].star <= 0) {
+      return;
+    }
+
+    movies[movieID].star -= 0.5;
+    this.setState({
+      movies,
+    });
+  };
+
+  handleToggleFav = (movie) => {
+    const { movies } = this.state;
+    const movieID = movies.indexOf(movie);
+    movies[movieID].fav = !movies[movieID].fav;
+    this.setState({
+      movies,
+    });
+  };
+
+  handleToggleCard = (movie) => {
+    const { movies } = this.state;
+    const movieID = movies.indexOf(movie);
+    movies[movieID].isInCart = !movies[movieID].isInCart;
+    this.setState({
+      movies,
+    });
+  };
+
   render() {
     const { movies } = this.state;
     return (
       <div className="main">
         {movies.map((movie, index) => (
-          <Moviecard movies={movie} key={index} />
+          <Moviecard
+            movies={movie}
+            key={index}
+            onIncStars={this.handleAddStars}
+            onDecStars={this.handleDecStars}
+            onClickFav={this.handleToggleFav}
+            onClickCard={this.handleToggleCard}
+          />
         ))}
       </div>
     );

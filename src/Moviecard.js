@@ -39,8 +39,11 @@ class MovieCard extends Component {
   };
 
   render() {
-    const { title, plot, poster, price, rating, star, fav, isInCard } =
+    const { onIncStars, movies, onDecStars, onClickFav, onClickCard } =
+      this.props;
+    const { title, plot, poster, price, rating, star, fav, isInCart } =
       this.props.movies;
+    console.log(movies);
     return (
       <div className="movie-card">
         <div className="left">
@@ -57,7 +60,7 @@ class MovieCard extends Component {
                 className="str-btn"
                 alt="decrease"
                 src="https://cdn-icons-png.flaticon.com/128/43/43625.png"
-                onClick={this.decreaseStar}
+                onClick={() => onDecStars(movies)}
               />
               <img
                 alt="start"
@@ -68,22 +71,22 @@ class MovieCard extends Component {
                 className="str-btn"
                 alt="increase"
                 src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
-                onClick={this.addStar}
+                onClick={() => onIncStars(movies)}
               />
               <span className="starCount">{star}</span>
             </div>
 
             <button
               className={fav ? "unfavourite-btn" : "favourite-btn"}
-              onClick={this.handleAddToFavourite}
+              onClick={() => onClickFav(movies)}
             >
               {fav ? "Unfavourite" : "Favourite"}
             </button>
             <button
-              className={isInCard ? "remove-from-card" : "cart-btn"}
-              onClick={this.handleAddToCard}
+              className={isInCart ? "remove-from-card" : "cart-btn"}
+              onClick={() => onClickCard(movies)}
             >
-              {isInCard ? "Remove from card" : "Add to cart"}
+              {isInCart ? "Remove from card" : "Add to cart"}
             </button>
           </div>
         </div>
